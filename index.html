@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecasted Demand</title>
+</head>
+<body>
+    <h1>Forecasted Demand Visualization</h1>
+    <form method="post">
+        <label for="product">Select Product:</label>
+        <select name="product" id="product" onchange="this.form.submit()">
+            {% for product in product_names %}
+                <option value="{{ product }}" {% if product == selected_product %}selected{% endif %}>{{ product }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <div>
+        {{ chart_html | safe }}
+    </div>
+</body>
+</html>
